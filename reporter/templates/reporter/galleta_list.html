@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	
+	<ul>
+	{% for galleta in object_list %}
+		<li> 
+			{{ galleta.proveedor }},
+			{% for sabor in galleta.sabores.all %}
+    			{{ sabor }},
+    		{% endfor %}
+    		<span style="color: blue">Precio: {{ galleta.precio }}</span>
+    		<span style="color: red">- {{ galleta.cantidad }} </span>
+    	</li>
+    	
+		{% empty %}
+		
+    	<li>No hay galletas.</li>
+    	
+	{% endfor %}
+	</ul>
+	
+{% endblock %}
